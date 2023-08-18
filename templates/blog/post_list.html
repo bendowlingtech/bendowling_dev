@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+    {% for ticket in ticket_list %}
+        <li>{{ ticket.title }}</li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

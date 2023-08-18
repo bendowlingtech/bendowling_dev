@@ -1,19 +1,32 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 
 # Create your views here.
 from django.http import HttpResponse
 
-from models import Blog
+from models import Post
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the blog index.")
 
-class BlogListView(ListView):
-    model = Blog
-    template_name = 'blog_list.html'
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
 
-class BlogDetailView(DetailView):
-    model = Blog
-    template_name = 'blog_detail.html'
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = 'blog/post_create.html'
+    fields = ['title', 'content']
+    success_url = reverse_lazy('list')
+
+
+
+
+
+
